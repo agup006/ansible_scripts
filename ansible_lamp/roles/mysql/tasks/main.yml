@@ -1,0 +1,25 @@
+---
+# tasks file for mysql
+ - name: install mysql package
+   apt: name={{item}} state=present
+   with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
+    - libmysqlclient-dev
+
+ - name: Create my sql config file
+   template: 
+    src: my.cnf.j2 
+    dest: /etc/mysql/my.cnf
+    owner: root
+    mode: 0600
+   notify:
+    - start MySQL
+    - restart MySQL
+
+ - name: create app db
+   mysql_db: name={{dbname}} state=present
+
+ - name: create app db user
+   mysql_user: name={{dbuser}} password={{upassword}} priv=*.*:ALL host='%' state=present

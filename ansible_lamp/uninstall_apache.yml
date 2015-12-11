@@ -1,0 +1,7 @@
+--- 
+  - name: uninstall and configure apache
+    hosts: [dev]
+
+    tasks:
+    - name: un-install apache
+      apt: name=apache2 state=absent purge=yes

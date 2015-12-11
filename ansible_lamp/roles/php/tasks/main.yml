@@ -1,0 +1,12 @@
+---
+# tasks file for php
+ - name: install php and git
+   apt: name={{item}} state=present
+   with_items:
+   - php5
+   - php5-mysql
+   - git-core
+
+ - name: copy hello world code from repo
+   #git: repo={{repository}} version={{webapp_version}} dest=var/www/html
+   git: repo={{repository}} dest=var/www/html

@@ -1,0 +1,12 @@
+---
+# tasks file for common
+
+#the repo that hols the web app
+repository: https://github.com/bennojoy/mywebapp.git
+
+#sha1sum of version 5 of the test webapp
+#webapp_version: 351e47276cc66b01818f4890a04709d4cc3d3eedb0d
+
+#ensures that the websever does snap to ipv4
+
+iface: '{{ ansible_default_ipv4.interface }}'

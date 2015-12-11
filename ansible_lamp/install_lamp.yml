@@ -1,0 +1,19 @@
+--- 
+  - name: apply common configuration to all hosts 
+    hosts: all
+
+    roles:
+    - common
+
+  - name: configure and deploy db severs
+    hosts: dbservers
+ 
+    roles:
+    - mysql
+
+  - name: configure webservers
+    hosts: webservers
+
+    roles:
+    - apache
+    - php
